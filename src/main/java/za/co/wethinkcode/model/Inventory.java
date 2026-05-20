@@ -62,14 +62,37 @@ public class Inventory {
 
     // TODO: implement getTotalItems()
     // - return size of inventory
-    public int getTotalItems()
+    public int getTotalItems() {
+        return items.size();
+    }
 
     // TODO: implement containsItem(String itemName)
     // - return true if any item matches name
+    public boolean containsItem(String itemName) {
+        for (int i=0;i<items.size();i++) {
+            if(items.get(i).getName().equals(itemName)) {
+                return true;
+            }
+        }return false;
+    }
 
     // TODO: override toString()
     // Example:
     // Inventory:
     // - Sword (ID: 1)
     // - Shield (ID: 2)
+    @Override
+    public String toString() {
+        StringBuilder inventoryString = new StringBuilder();
+        inventoryString.append("Inventory:\n");
+        for (int i=0;i<items.size();i++) {
+            inventoryString.append("- ");
+            inventoryString.append(items.get(i).getName());
+            inventoryString.append(" (");
+            inventoryString.append("ID: ");
+            inventoryString.append(items.get(i).getId());
+            inventoryString.append(")");
+            inventoryString.append("\n");
+        }return inventoryString.toString();
+    }
 }
